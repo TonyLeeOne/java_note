@@ -1,0 +1,78 @@
+/*横向时间轴*/
+.time-horizontal {
+    list-style-type: none;
+    border-top: 1px solid #707070;
+    max-width: 800px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.time-horizontal li {
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 25%;
+    padding-top: 10px;
+}
+
+.time-horizontal li b:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 47%;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #4c4c4c;
+    border-radius: 8px;
+    background: #4c4c4c;
+}
+
+/*纵向时间轴*/
+.time-vertical {
+    list-style-type: none;
+    border-left: 2px solid #707070;
+    padding: 0px;
+    /*height: 400px;*/
+}
+
+.time-vertical li {
+    /*height: 70px;*/
+    min-height: 30px;
+    position: relative;
+}
+
+.time-vertical li a {
+    display: inline-block;
+    margin-left: 40px;
+    margin-top: 35px;
+    text-decoration: none;
+    color: #000;
+}
+
+.time-vertical li b:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #000000;
+    border-radius: 30px;
+    background: #98FB98;
+}
+
+.time-vertical li span h1 {
+    position: absolute;
+    color: #000000;
+    top: 6px;
+    left: -18px;
+    text-align: center;
+}
+
+.time-vertical li h2 {
+    position: absolute;
+    color: #0d5fff;
+    top: 10px;
+    left: -110px;
+    padding-top: 1px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>你找的页面丢失了</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/buttons.css}"
+          href="/css/buttons.css"/>
+    <link rel="stylesheet" th:href="@{/css/messenger.css}"
+          href="/css/messenger.css"/>
+    <link rel="stylesheet" th:href="@{/css/messenger-theme-flat.css}"
+          href="/css/messenger-theme-flat.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+          href="/css/font-awesome.min.css"/>
+</head>
+<body>
+<div th:replace="navigation::pagination"></div>
+<div class="container" style="margin-top: 4%">
+    <img src="/images/404.jpg">
+</div>
+</body>
+</html>

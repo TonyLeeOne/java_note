@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width-device=width,initial = 1.0"/>
+    </head>
+<body>
+<div th:fragment="pagination">
+    <!--navbar-fixed-top-->
+    <nav class="navbar navbar-inverse" role="navigation" id="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">展开导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" style="color: rgba(223,159,95,0.64)"><i class="icon-home">  桔子驿站</i></a>
+        </div>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 2%">
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                        class="icon-lightbulb"></i> 阅读背景<b
+                        class="caret"></b></a>
+                    <ul class="dropdown-menu text-center">
+                        <li>
+                            <div href="#" class="input-sm text-center"
+                                 style="background-color:#EAEAEF;margin-right: 25px;margin-left: 25px" value="#EAEAEF">
+                                极光灰
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="input-sm text-center"
+                                 style="background-color:darkgray;margin-right: 25px;margin-left: 25px"
+                                 value="darkgray">暗黑色
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="input-sm text-center"
+                                 style="background-color:#FAF9DE;margin-right: 25px;margin-left: 25px" value="#FAF9DE">
+                                杏仁黄
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="input-sm text-center"
+                                 style="background-color:aliceblue;margin-right: 25px;margin-left: 25px"
+                                 value="aliceblue">冰蓝色
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="input-sm text-center"
+                                 style="background-color:white;margin-right: 25px;margin-left: 25px" value="white">默认
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#" id="change"><i class="icon-exchange"></i> 主题切换</a></li>
+                <li><a href="/note/publisher"><i class=" icon-bullhorn"></i> 公告</a></li>
+                <li><a href="mailto:474653235@qq.com"><i class="icon-envelope"></i> 联系我</a></li>
+                <li th:if="${session.username}==null"><a href="/user/login"><i class="icon-github-alt"></i> 登录</a></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        th:if="${session.username}!=null"><i class="icon-user"></i> <span
+                        th:text="${session.username}" class="text-primary" style="font-weight: bold"></span><b
+                        class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/note/list?pageNum=1&size=10"><i class="icon-cog"></i> 管理文章</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/note/wr"><i class="icon-pencil"></i> 写博客</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/user/logout"><i class="icon-signout"></i> 注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-form navbar-right" style="margin-right: 2%">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="文章名 | 分类" style="max-width: 500px;width: 350px" id="searchContent">
+                </div>
+                <button class="btn btn-success button-glow" id="search" style="margin-left: 1px">搜索</button>
+            </ul>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

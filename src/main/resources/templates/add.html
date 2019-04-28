@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>写博客</title>
+    <link rel="stylesheet" th:href="@{/css/editormd.min.css}"
+          href="/css/editormd.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/buttons.css}"
+          href="/css/buttons.css"/>
+    <link rel="stylesheet" th:href="@{/css/messenger.css}"
+          href="/css/messenger.css"/>
+    <link rel="stylesheet" th:href="@{/css/messenger-theme-future.css}"
+          href="/css/messenger-theme-future.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+          href="/css/font-awesome.min.css"/>
+</head>
+<body>
+<div th:include="navigation::pagination" id="test"></div>
+<div class="col-sm-offset-1 col-sm-10" style="margin-top: 3%" id="layout">
+    <header>
+        <div class="input-group">
+            <span class="input-group-addon">标题</span>
+            <input type="text" class="form-control" placeholder="请输入标题" aria-describedby="basic-addon1" id="title">
+            <input type="hidden" class="form-control" id="id">
+            <span class="input-group-addon">分类</span>
+            <input type="text" class="form-control" placeholder="请输入分类" aria-describedby="basic-addon1" id="category">
+            <span class="input-group-addon">封面</span>
+            <input type="text" class="form-control" placeholder="请输入封面Url" aria-describedby="basic-addon1"
+                   id="imageUrl">
+        </div>
+    </header>
+    <div style="position: fixed;z-index: 9999;margin-left: 40%;margin-top: 20%;display: none" id="sync">
+        <i class="icon-refresh icon-spin icon-4x"></i>
+    </div>
+    <div id="test-editormd" class="editormd" style="margin-top: 2%">
+        <textarea style="display:none" name="test-editormd-markdown-doc" id="content"></textarea>
+        <textarea class="editormd-html-textarea" name="text" id="htmlContent"></textarea>
+    </div>
+    <div class="btn-group btn-group-justified" role="group" id="btnGroup">
+        <button type="button" class="button button-rounded button-primary" id="submit">公开发布</button>
+        　　
+        <button type="button" class="button button-rounded button-highlight" id="draft">存为草稿
+        </button>
+        　　
+        <button type="button" class="button button-rounded button-caution" id="personal">设置私密
+        </button>
+        　　
+        <button type="button" class="button button-rounded button-royal" id="publisher"
+                th:if="${session.username}=='TonyLeeOne'">发布公告
+        </button>
+        　　
+        <a type="button" href="/note/list?pageNum=1&size=10" class="button button-rounded button-action button-border">返回管理页面
+        </a>
+    </div>
+
+</div>
+</div>
+
+<!--<button id="submitBtn">提交</button>-->
+<script th:src="@{/js/jquery.min.js}" src="/js/jquery.min.js"></script>
+<script th:src="@{/js/editormd.min.js}" src="/js/editormd.min.js"></script>
+<script th:src="@{/js/bootstrap.min.js}" src="/js/bootstrap.min.js"></script>
+<script th:src="@{/js/messenger.min.js}" src="/js/messenger.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/edit.js"></script>
+</body>
+</html>

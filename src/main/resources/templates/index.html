@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>首页</title>
+    <link rel="stylesheet" th:href="@{/css/editormd.min.css}"
+          href="/css/editormd.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/buttons.css}"
+          href="/css/buttons.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+          href="/css/font-awesome.min.css"/>
+
+    <style>
+        .dict {
+            margin: 5px 0;
+            clear: both;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .dict a {
+            line-height: 24px;
+            height: 24px;
+            display: inline-block;
+            background: #fff;
+            padding: 3px 11px;
+            margin: 10px 5px 0 0;
+            border-radius: 8px;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        .dict a {
+            color: #FFF;
+            text-decoration: none
+        }
+
+        .dict .pcolor a{
+            background: #8A9B0F
+        }
+    </style>
+</head>
+<body>
+<div th:replace="navigation::pagination"></div>
+<div class="container" style="margin-top: 2%">
+    <div class="col-sm-12 col-md-12">
+        <div id="article" class="col-sm-8 col-md-8">
+            <div th:each="record:${data.records}">
+                <a th:href="@{'/note/view?id='+${record.id}}"
+                   style="text-decoration: none;text-decoration-line: none;color: black">
+                    <div class="jumbotron">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h3 th:text="${record.noteName}"></h3>
+                                <i class="icon-user-md"></i> <span th:text="${record.creator}"></span>　
+                                <i class="icon-asterisk"></i> <span th:text="${record.category}"></span>　
+                                <i class="icon-edit" th:if="${record.modifyDate}!=null"></i> <span
+                                    th:text="${record.modifyDate}"></span>
+                            </div>
+                            <div class="col-sm-4" th:if="${#strings.length(record.imageUrl)}>0">
+                                <img th:src="${record.imageUrl}" class="img img-responsive img-rounded"
+                                     style="width: 80%;height: 80%"/>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4  col-md-4" style="position: fixed;right: 30px;top: 70px">
+            <h5>热门标签</h5>
+            <div class="dict">
+                <p class="pcolor" th:each="category:${categories}">
+                    <a th:href="@{'/note/archive?category='+${category.toString()}}" th:text="${category.toString()}" class="col-sm-3"></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center col-sm-8" style="margin-bottom: 5%;" id="loading">
+            <i class="icon-spinner icon-spin icon-2x text-success"></i>　加载中...
+        </div>
+        <div class="text-center col-sm-8" style="margin-bottom: 5%;" id="loadingOver">
+            <i class="icon-warning-sign icon-2x text-danger"></i>　没有更多数据了...
+        </div>
+        <div class="col-sm-offset-6 col-sm-4" style="position: fixed">
+        </div>
+    <button onclick="topFunction()" id="myBtn" title="返回顶部"
+            class="button button-large button-plain button-action button-glow button-border button-box"
+            style="display: none;position: fixed;right: 30px;bottom: 20px"><i class="icon-chevron-up"></i></button>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/common.js"></script>
+<script>
+
+</script>
+</body>
+</html>

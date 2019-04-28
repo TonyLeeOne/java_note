@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>管理后台</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/buttons.css}"
+          href="/css/buttons.css"/>
+    <link rel="stylesheet" th:href="@{/css/messenger.css}"
+          href="/css/messenger.css"/>
+    <link rel="stylesheet" th:href="@{/css/messenger-theme-flat.css}"
+          href="/css/messenger-theme-flat.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+          href="/css/font-awesome.min.css"/>
+</head>
+<body>
+<div th:replace="navigation::pagination"></div>
+<div class="container" style="margin-top: 4%">
+    <ul style="list-style: none;list-style-type: none" th:each="blogId,key:${data}" th:if="${not #lists.isEmpty(data)}">
+        <li class="col-sm-12" style="margin: 1%">
+                <b><i class="icon-calendar btn-lg"></i> <span th:text="${key.current.key}"></span></b>
+            <div style="margin: 1%"  th:each="vo:${key.current.value}">
+                    <b><a class="col-sm-6" th:href="@{'/note/view?id='+${vo.id}}" style="text-decoration-line: none;text-decoration: blue;">
+                        <i class="icon-link"></i>　<span th:text="${vo.noteName}"></span></a></b>
+            </div>
+        </li>
+    </ul>
+</div>
+<script th:src="@{/js/jquery.min.js}" src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>
