@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterRegistry {
 
-//    @Bean
+    @Bean
     public FilterRegistrationBean filterRegistrationBean(){
         return new FilterRegistrationBean(new AuthFilter());
     }

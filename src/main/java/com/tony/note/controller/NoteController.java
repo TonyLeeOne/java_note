@@ -136,10 +136,4 @@ public class NoteController {
         return "publisher";
     }
 
-
-    @RequestMapping("/test")
-    @ResponseBody
-    private String test(){
-        return "Test Success";
-    }
 }

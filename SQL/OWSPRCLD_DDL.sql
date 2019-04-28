@@ -10,8 +10,7 @@ create table info
   create_date varchar(30) null,
   modifier varchar(10) default 'DBA' null,
   modify_date varchar(30) null
-)
-;
+);
 
 create table note
 (
@@ -27,8 +26,7 @@ create table note
   modifier varchar(20) default 'DBA' null,
   modify_date varchar(30) null,
   image_url varchar(100) null
-)
-;
+);
 
 create table user
 (
@@ -38,8 +36,27 @@ create table user
   avatar varchar(100) null,
   state char default '1' null comment '1为有效，2为锁定',
   git_url varchar(100) null
-)
-;
+);
+
+create table subject (
+  id          varchar(30)  not null primary key,
+  sub_name    varchar(30) not null comment '专题名',
+  descriptiion        varchar(100) comment '描述',
+  image varchar(30) comment '主题图片',
+  creator     varchar(30),
+  create_date varchar(20),
+  is_delete   char(1) default '1',
+  modify_date varchar(20),
+  modifier    varchar(20)
+);
+
+create table r_sub_note(
+  id varchar(30) not null primary key ,
+  sub_id varchar(30),
+  note_id varchar(32),
+  is_delete char(1) default '1'
+);
+
 
 
 

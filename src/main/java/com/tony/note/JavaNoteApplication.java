@@ -13,9 +13,4 @@ public class JavaNoteApplication {
         SpringApplication.run(JavaNoteApplication.class, args);
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "edit";
-    }
-
 }
