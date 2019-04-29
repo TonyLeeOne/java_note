@@ -98,10 +98,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
+                <!--<configuration>-->
                     <!--fork :  如果没有该项配置则devtools不会起作用，即应用不会restart -->
                     <!--<fork>true</fork>-->
-                </configuration>
+                <!--</configuration>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

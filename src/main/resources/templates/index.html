@@ -56,16 +56,16 @@
                    style="text-decoration: none;text-decoration-line: none;color: black">
                     <div class="jumbotron">
                         <div class="row">
-                            <div class="col-sm-9">
+                            <div class="col-sm-8">
                                 <h3 th:text="${record.noteName}"></h3>
                                 <i class="icon-user-md"></i> <span th:text="${record.creator}"></span>　
                                 <i class="icon-asterisk"></i> <span th:text="${record.category}"></span>　
                                 <i class="icon-edit" th:if="${record.modifyDate}!=null"></i> <span
                                     th:text="${record.modifyDate}"></span>
                             </div>
-                            <div class="col-sm-3" th:if="${#strings.length(record.imageUrl)}>0">
+                            <div class="col-sm-4" th:if="${#strings.length(record.imageUrl)}>0">
                                 <img th:src="${record.imageUrl}" class="img img-responsive img-rounded"
-                                     style="width: 90%;height: 90%"/>
+                                     style="width: 80%;height: 80%"/>
                             </div>
                         </div>
                     </div>

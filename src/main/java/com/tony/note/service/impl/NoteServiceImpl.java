@@ -52,11 +52,12 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note> implements No
 
     @Override
     public String syncNote(NoteVo noteVo, HttpSession session) {
-        log.info("接收到的传值为:[{]]",noteVo.toString());
         String username = (String) session.getAttribute("username");
         Note note = BeanMapper.map(noteVo, Note.class);
         if (StringUtils.isEmpty(note.getId())) {
-            note.setCreator(username);
+            if(!StringUtils.isEmpty(username)){
+                note.setCreator(username);
+            }
             if (save(note)) {
                 log.info("数据新增成功....");
                 return note.getId();
