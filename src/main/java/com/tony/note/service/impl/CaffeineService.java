@@ -5,6 +5,7 @@ import com.tony.note.constant.Constant;
 import com.tony.note.controller.dto.IPageVo;
 import com.tony.note.controller.dto.NoteVo;
 import com.tony.note.controller.dto.UserVo;
+import com.tony.note.entity.Category;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,6 +51,10 @@ public class CaffeineService {
 
     public List<Object> getCategories(){
         return (List<Object>) cache.get(Constant.ALL_CATEGORIES);
+    }
+
+    public List<Category> getAllCategories(){
+        return (List<Category>) cache.get(Constant.CATEGORIES);
     }
 
 

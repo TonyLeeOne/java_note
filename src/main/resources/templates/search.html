@@ -34,7 +34,7 @@
                             <div class="col-sm-4">
                                 <img th:src="${record.imageUrl}" class="img img-responsive img-rounded"
                                      style="width: 80%;height: 80%"
-                                     th:if="${record.imageUrl}!=null"/>
+                                     th:if="${#strings.length(record.imageUrl)}>0"/>
                             </div>
                         </div>
                     </div>

@@ -78,6 +78,7 @@ public class NoteController {
         Note note = noteService.editNote(id);
         NoteVo noteVo = BeanMapper.map(note, NoteVo.class);
         modelMap.addAttribute("note", noteVo);
+        modelMap.addAttribute("categories",caffeineService.getAllCategories());
         return "edit";
     }
 
@@ -90,7 +91,8 @@ public class NoteController {
 
 
     @GetMapping("/wr")
-    private String getNote() {
+    private String getNote(ModelMap modelMap) {
+        modelMap.addAttribute("categories",caffeineService.getAllCategories());
         return "add";
     }
 

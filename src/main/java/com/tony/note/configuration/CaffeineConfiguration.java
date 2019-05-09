@@ -1,7 +1,10 @@
 package com.tony.note.configuration;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
+import com.tony.note.entity.Category;
+import com.tony.note.service.CategoryService;
 import com.tony.note.service.NoteService;
 import com.tony.note.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +29,9 @@ public class CaffeineConfiguration {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Bean("noteCache")
     public LoadingCache<String, Object> noteCache() {
@@ -66,6 +72,10 @@ public class CaffeineConfiguration {
 
         if(key.equals(ALL_CATEGORIES)){
             return noteService.getCategories();
+        }
+
+        if(key.equals(CATEGORIES)){
+            return categoryService.getList();
         }
 
         if(key.startsWith(SEARCH)){

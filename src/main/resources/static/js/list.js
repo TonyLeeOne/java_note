@@ -30,7 +30,7 @@ $("[id='delete']").each(function () {
     }
 );
 
-$("#search").click(function () {
+$("#search1").click(function () {
     var noteName = $("#noteName").val();
     var category = $("#category").val();
     var state = $("#state").val();

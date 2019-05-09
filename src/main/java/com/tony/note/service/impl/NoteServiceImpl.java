@@ -160,6 +160,11 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note> implements No
     }
 
     @Override
+    public boolean used(String category) {
+        return count(new QueryWrapper<Note>().lambda().eq(Note::getCategory,category))>0;
+    }
+
+    @Override
     public boolean deleteById(String id) {
         return removeById(id);
     }

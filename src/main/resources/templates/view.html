@@ -16,7 +16,7 @@
     <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
           href="/css/font-awesome.min.css"/>
     <link rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+          href="/css/railscasts.css">
 </head>
 <body>
 <div th:replace="navigation::pagination"></div>
@@ -76,7 +76,8 @@
         <script src="/editormd/lib/jquery.flowchart.min.js"></script>
         <script src="/js/view.js"></script>
         <script src="/js/common.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
     </div>
 </div>
 </body>

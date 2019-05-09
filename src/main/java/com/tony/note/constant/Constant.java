@@ -17,4 +17,5 @@ public class Constant {
     public static final String WINDOWS="\\";
     public static final String LINUX="/";
     public static final String ALL_CATEGORIES="categories";
+    public static final String CATEGORIES="mgt_categories";
 }

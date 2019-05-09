@@ -38,5 +38,6 @@ public interface NoteService extends IService<Note> {
 
     List<Object> getCategories();
 
+    boolean used(String category);
 
 }

@@ -1,4 +1,4 @@
-package com.tony.note.entity;
+package com.tony.note.controller.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -7,20 +7,16 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * @author jli2
- * @date 4/28/2019 10:44 AM
+ * @date 5/5/2019 11:13 AM
  **/
-@TableName("R_SUB_NOTE")
 @Data
 @Accessors(chain = true)
-public class SubNote {
-    @TableId(type = IdType.ID_WORKER_STR)
+public class CategoryVo implements Serializable {
+    private static final long serialVersionUID = -6875490085317420669L;
     private String id;
-    private String subId;
-    private String noteId;
-    @TableLogic(value = "1",delval = "2")
-    private String isDelete;
-
-
+    private String name;
 }

@@ -40,7 +40,7 @@
                 </select>
             </div><!-- /input-group -->
         </div>
-        <button class="btn btn-success" id="search">搜索</button>
+        <button class="btn btn-success" id="search1">搜索</button>
         　
         <!--<a class="btn btn-primary" href="/note/wr">写文章</a>-->
     </div><!-- /.row -->
@@ -66,7 +66,8 @@
             </thead>
             <tbody>
             <tr th:each="record:${data.records}">
-                <td><a th:href="@{'/note/view?id='+${record.id}}" class="glyphicon glyphicon-list-alt text-primary" target="_blank" style="text-decoration: blue;text-decoration-line: none">
+                <td><a th:href="@{'/note/view?id='+${record.id}}" class="glyphicon glyphicon-list-alt text-primary"
+                       target="_blank" style="text-decoration: blue;text-decoration-line: none">
                     <span th:text="${record.noteName}"></span></a></td>
                 <td><span class="glyphicon glyphicon-tasks text-info"></span> <span th:text="${record.category}"></span>
                 </td>
@@ -119,7 +120,6 @@
             </li>
         </ul>
     </div>
-
 </div>
 <script th:src="@{/js/jquery.min.js}" src="/js/jquery.min.js"></script>
 <script th:src="@{/js/messenger.min.js}" src="/js/messenger.min.js"></script>

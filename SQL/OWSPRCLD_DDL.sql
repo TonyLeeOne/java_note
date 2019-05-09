@@ -19,7 +19,7 @@ create table note
   note_name varchar(100) not null,
   category varchar(30) not null,
   content mediumtext null,
-  state char default '1' null comment '1为发布，2为草稿，默认为1',
+  state char default '1' null comment '1为发布，2为草稿，3为私密，4为公告,默认为1',
   is_delete char default '1' null comment '默认为1 删除为2',
   creator varchar(20) default 'DBA' null,
   create_date varchar(30) null,
@@ -38,24 +38,16 @@ create table user
   git_url varchar(100) null
 );
 
-create table subject (
-  id          varchar(30)  not null primary key,
-  sub_name    varchar(30) not null comment '专题名',
-  descriptiion        varchar(100) comment '描述',
-  image varchar(30) comment '主题图片',
-  creator     varchar(30),
-  create_date varchar(20),
-  is_delete   char(1) default '1',
-  modify_date varchar(20),
-  modifier    varchar(20)
-);
+create table category
+(
+  id varchar(30) not null
+    primary key,
+  name varchar(100) null,
+  is_delete char default '1' null
+)
+;
 
-create table r_sub_note(
-  id varchar(30) not null primary key ,
-  sub_id varchar(30),
-  note_id varchar(32),
-  is_delete char(1) default '1'
-);
+
 
 
 

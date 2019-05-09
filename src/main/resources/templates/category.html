@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>分类</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/buttons.css}"
+          href="/css/buttons.css"/>
+    <link rel="stylesheet" th:href="@{/css/messenger.css}"
+          href="/css/messenger.css"/>
+    <link rel="stylesheet" th:href="@{/css/messenger-theme-flat.css}"
+          href="/css/messenger-theme-flat.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+          href="/css/font-awesome.min.css"/>
+</head>
+<body>
+<div th:replace="navigation::pagination"></div>
+<div class="container" style="margin-top: 4%">
+    <div th:if="${not #lists.isEmpty(categories)}" th:each="category:${categories}">
+            <div style="margin-top: 2%">
+                <b draggable="true" ondragstart="drag(event)"><a class="col-sm-3" th:href="@{'/note/archive?category='+${category.name}}" th:id="${category.id}"
+                      style="text-decoration-line: none">
+                    <i class="icon-certificate"></i>　<span th:text="${category.name}"></span></a></b>
+            </div>
+    </div>
+    <div>
+        <div class="col-sm-10" style="margin-top: 2%">
+            <span class="glyphicon glyphicon-plus text-success" id="plus"></span>　　<span class="glyphicon glyphicon-trash text-danger" id="delete"></span>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group" id="category">
+                <input type="text" class="form-control" placeholder="新增分类" id="content">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" id="ok"><i class="icon-ok"></i></button>
+                  <button class="btn btn-default" type="button" id="remove"><i class="icon-remove"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-10 col-sm-offset-1">
+            <div id="delSpace" ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 100px;background-color: rgba(153,153,153,0.19);text-align: center;line-height: 100px" >
+                禁飞区
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/jquery.min.js}" src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/common.js"></script>
+<script th:src="@{/js/messenger.min.js}" src="/js/messenger.min.js"></script>
+<script>
+
+    Messenger.options = {
+        extraClasses: 'messenger-fixed messenger-on-top',
+        theme: 'flat'
+    }
+
+    $(function () {
+        $("#category").hide();
+        $("#delSpace").hide();
+    });
+
+    $("#plus").click(function () {
+        $("#category").show();
+        $(this).hide();
+        $("#delete").hide();
+    });
+
+    $("#delete").click(function () {
+        $("#delSpace").toggle();
+    });
+
+    $("#remove").click(function () {
+        $("#category").hide();
+        $("#plus").show();
+        $("#delete").show();
+    });
+
+    $("#ok").click(function () {
+        var content=$("#content").val();
+        if(content)
+            var  cate={};
+        cate.name=content;
+        $.ajax({
+            url:"/category",
+            method:"post",
+            data:JSON.stringify(cate),
+            contentType: 'application/json;charset=utf-8',
+            success:function (data) {
+                Messenger().post({
+                    message: data,
+                    type: "info",
+                    showCloseButton: true
+                });
+                if(data=='true')
+                    location.reload();
+            },
+            error:function () {
+                Messenger().post({
+                    message: "系统异常",
+                    type: "error",
+                    showCloseButton: true
+                });
+            }
+        });
+    });
+
+
+    function allowDrop(ev)
+    {
+        ev.preventDefault();
+    }
+
+    function drag(ev)
+    {
+        ev.dataTransfer.setData("Text",ev.target.id);
+    }
+
+    function drop(ev)
+    {
+        ev.preventDefault();
+        var data=ev.dataTransfer.getData("Text");
+        $("#delSpace").html("<i class='icon-spinner icon-spin icon-2x' style='line-height: 100px'></i>　删除中...");
+        $.ajax({
+            url:"/category?id="+data,
+            method:"delete",
+            success:function (res) {
+                if(res=='true'){
+                    $("#"+data).remove();
+                    $("#delSpace").html("<i class='icon-ok icon-2x text-success' style='line-height: 100px'></i>　删除成功");
+                }else {
+                    $("#delSpace").html("<i class='icon-remove icon-2x text-danger' style='line-height: 100px'></i>　"+res);
+                }
+            },
+            error:function () {
+                Messenger().post({
+                    message: "系统异常",
+                    type: "error",
+                    showCloseButton: true
+                });
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

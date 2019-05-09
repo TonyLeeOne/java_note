@@ -21,7 +21,10 @@ public class WebMevConfiguration implements WebMvcConfigurer {
     @Value("${upload.directory}")
     private String path;
 
-
+    /**
+     * 配置文件虚拟路径
+     * @param registry
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         String filePath = DirectoryUtils.getFileDirectory().concat(path);
@@ -34,6 +37,10 @@ public class WebMevConfiguration implements WebMvcConfigurer {
 
     }
 
+    /**
+     * 设置首页
+     * @param registry
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("forward:/note/show?pageNum=1&size=10");
