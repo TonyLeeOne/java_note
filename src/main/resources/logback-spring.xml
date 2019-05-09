@@ -62,9 +62,13 @@
         <appender-ref ref="SPRING_FILE"/>
     </appender>
 
-    <Logger name="com.tony.note" level="info">
+    <root level="info">
         <appender-ref ref="ASYNC_BUSINESS_FILE"/>
-    </Logger>
+    </root>
+
+    <!--<Logger name="com.tony.note" level="info">-->
+        <!--<appender-ref ref="ASYNC_BUSINESS_FILE"/>-->
+    <!--</Logger>-->
     <Logger name="org.springframework" level="info">
         <appender-ref ref="ASYNC_SPRING_FILE"/>
     </Logger>
