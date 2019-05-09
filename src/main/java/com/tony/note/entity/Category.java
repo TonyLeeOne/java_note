@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
  * @author jli2
  * @date 5/5/2019 11:13 AM
  **/
-@TableName("Category")
+@TableName("category")
 @Data
 @Accessors(chain = true)
 public class Category {
