@@ -1,0 +1,1 @@
+grant select ,update ,insert ,delete on note.* to tony@'%' identified by 'tony';
