@@ -41,7 +41,7 @@ public class AuthFilter implements Filter {
                 log.info("请求的url[{}],请求方式[{}],用户名[{}]",request.getRequestURL(), request.getMethod(),username);
                 filterChain.doFilter(request, response);
             } else {
-                request.getRequestDispatcher("/user/login").forward(request, response);
+                request.getRequestDispatcher("/user/signin").forward(request, response);
             }
         } else {
             filterChain.doFilter(request, response);

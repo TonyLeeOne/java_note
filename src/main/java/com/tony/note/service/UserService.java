@@ -8,7 +8,11 @@ public interface UserService extends IService<User> {
 
     boolean checkUserExist(String username);
 
+    User checkUserExist(String username,String password);
+
     boolean saveUser(UserVo userVo);
 
     UserVo getByUsername(String username);
+
+    boolean savePass(String password,String username);
 }

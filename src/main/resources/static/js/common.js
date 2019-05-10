@@ -38,3 +38,19 @@ $(".input-sm").each(function () {
         }
     });
 });
+
+function confirm()
+{
+    $.ajax({
+        url: "/user/password/reset",
+        method: "post",
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify({newPass: $("#new").val(), oldPass: $("#old").val()}),
+        success: function (data) {
+            alert(data);
+        },
+        error: function () {
+            console.log("系统异常");
+        }
+    });
+}

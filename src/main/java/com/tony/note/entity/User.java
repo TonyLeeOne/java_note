@@ -18,4 +18,5 @@ public class User {
     private String avatar;
     private String state;
     private String gitUrl;
+    private String password;
 }

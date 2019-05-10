@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>分类</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/buttons.css}"
+          href="/css/buttons.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+          href="/css/font-awesome.min.css"/>
+</head>
+<body>
+<div th:replace="navigation::pagination"></div>
+<div class="container" style="margin-top: 4%">
+
+    <div class="col-sm-4 col-sm-offset-4" style="margin-top: 10%">
+        <div class="form-horizontal">
+            <fieldset>
+                <h4 class="text-center">用户登录</h4>
+
+                <div class="form-group">
+                    <div class="controls">
+                        <input type="text" placeholder="用户名" class="form-control" id="username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="controls">
+                        <input type="password" placeholder="密码" class="form-control" id="pass">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="controls">
+                        <button id="login" class="btn btn-success btn-block">登录</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        一键注册　<a href="/user/login" style="text-decoration-line: none;text-decoration: #5cb85c"><i class="icon-github icon-2x"></i></a>
+    </div>
+
+    <div class="col-sm-4 col-sm-offset-4" id="alert" style="margin-top: 3%">
+
+    </div>
+
+</div>
+<script th:src="@{/js/jquery.min.js}" src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/common.js"></script>
+<script>
+    $("#login").click(function () {
+       var userVo={};
+       userVo.username=$("#username").val();
+       userVo.password=$("#pass").val();
+       $.ajax({
+           url:"/user/login",
+           method:"post",
+           data: JSON.stringify(userVo),
+           contentType: 'application/json;charset=utf-8',
+           success:function (data) {
+               if (data) {
+                   $("#alert").html("<div class=\"alert alert-danger alert-dismissable\" >\n" +
+                       "            <button type=\"button\" class=\"close\" data-dismiss=\"alert\"\n" +
+                       "                    aria-hidden=\"true\">\n" +
+                       "                &times;\n" +
+                       "            </button>\n" +
+                       "            <h5 style=\"alignment: center\">" + data + "</h5>\n" +
+                       "        </div>");
+               } else
+                   jumpPrevious();
+           },
+           error:function () {
+               console.log("系统错误");
+           }
+
+       });
+    });
+
+    function jumpPrevious() {
+        var prevLink = document.referrer;
+        if ($.trim(prevLink) == '') {
+            location.href = '/';
+        } else {
+            if (prevLink.indexOf('localhost:8081') == -1) {	//来自其它站点
+                location.href = '/';
+            }
+            if (prevLink.indexOf('39.98.95.162:8081') == -1) {	//来自其它站点
+                location.href = '/';
+            }
+            if (prevLink.indexOf('/signin') != -1) {
+                location.href = '/';
+            }
+            location.href = prevLink;
+        }
+    }
+</script>
+</body>
+</html>

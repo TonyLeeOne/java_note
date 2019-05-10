@@ -35,8 +35,12 @@ create table user
   username varchar(10) null,
   avatar varchar(100) null,
   state char default '1' null comment '1为有效，2为锁定',
-  git_url varchar(100) null
-);
+  git_url varchar(100) null,
+  password varchar(100) null
+)
+;
+
+
 
 create table category
 (
