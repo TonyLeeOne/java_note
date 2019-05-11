@@ -43,6 +43,7 @@ public class CategoryController {
     @ResponseBody
     private String delete(String id){
         Category category=categoryService.getById(id);
+        System.out.println(category.getName());
         if(categoryService.used(category.getName()))
             return "当前标签已被占用，不可删除";
 

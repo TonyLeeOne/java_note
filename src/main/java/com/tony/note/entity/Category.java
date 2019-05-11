@@ -18,6 +18,7 @@ public class Category {
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;
     private String name;
+    private String image;
     @TableLogic(value = "1",delval = "2")
     private String isDelete;
 }

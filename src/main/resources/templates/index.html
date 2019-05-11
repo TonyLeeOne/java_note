@@ -15,34 +15,16 @@
           href="/css/font-awesome.min.css"/>
 
     <style>
-        .dict {
-            margin: 5px 0;
-            clear: both;
-            text-align: center;
-            font-size: 12px;
+        .name{
+            margin: 0 15px 15px 0;
+            font-family:Arial;
+            color: black;
         }
-
-        .dict a {
-            line-height: 24px;
-            height: 24px;
-            display: inline-block;
-            background: #fff;
-            padding: 3px 11px;
-            margin: 10px 5px 0 0;
-            border-radius: 8px;
-            -moz-transition: all 0.5s;
-            -webkit-transition: all 0.5s;
-            -o-transition: all 0.5s;
-            transition: all 0.5s;
+        .outer{
+            border-radius:5px;border-style:ridge;border-color: rgba(0, 0, 0, 0.07);width: 170px
         }
-
-        .dict a {
-            color: #FFF;
-            text-decoration: none
-        }
-
-        .dict .pcolor a {
-            background: #8A9B0F
+        .thumbail{
+            height: 40px;width: 40px;border-color: #000000
         }
     </style>
 </head>
@@ -75,15 +57,18 @@
         <div class="col-sm-4  col-md-3" style="position: fixed;right: 30px;top: 70px">
             <div class="col-sm-12">
                 <h5>热门标签</h5>
-                <div class="dict">
-                    <p class="pcolor" th:each="category:${categories}">
-                        <a th:href="@{'/note/archive?category='+${category.toString()}}"
-                           th:text="${category.toString()}" class="col-sm-3"></a>
-                    </p>
+                <div>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/javabase.gif" class="img-thumbnail thumbail"> <span class="name">Java基础</span></div></a>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/javahigh.gif" class="img-thumbnail thumbail"> <span class="name">Java高级</span></div></a>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/java.gif" class="img-thumbnail thumbail"> <span class="name">Java进阶</span></div></a>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/jenkins.gif" class="img-thumbnail thumbail"> <span class="name">Jenkins配置</span></div></a>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/mysql.gif" class="img-thumbnail thumbail"> <span class="name">Mysql数据库</span></div></a>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/linux.gif" class="img-thumbnail thumbail"> <span class="name">Linux相关</span></div></a>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/spring.gif" class="img-thumbnail thumbail"> <span class="name">Java框架</span></div></a>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/designpattern.gif" class="img-thumbnail thumbail"> <span class="name">Java设计模式</span></div></a>
+                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/tomcat.gif" class="img-thumbnail thumbail"> <span class="name">tomcat服务器</span></div></a>
+                    <a href="/category" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/more.gif" class="img-thumbnail thumbail"> <span class="name">查看更多 <i class="icon-spinner icon-spin"></i></span></div></a>
                 </div>
-            </div>
-            <div class="col-sm-10" style="margin-top: 1%">
-                <h5>相关专题</h5>
             </div>
         </div>
     </div>

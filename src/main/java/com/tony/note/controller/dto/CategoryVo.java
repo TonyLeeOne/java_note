@@ -19,4 +19,5 @@ public class CategoryVo implements Serializable {
     private static final long serialVersionUID = -6875490085317420669L;
     private String id;
     private String name;
+    private String image;
 }
