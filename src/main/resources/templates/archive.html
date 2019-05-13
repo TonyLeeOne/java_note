@@ -22,14 +22,19 @@
     <div class="row">
         <div class="col-sm-4 col-md-2">
             <div>
+                <h4>专栏图鉴</h4>
+                <hr>
                 <img th:src="${category.image}" style="height: 150px;width: 200px"
                      class="img-responsive img-thumbnail">
+                <hr>
             </div>
             <div style="margin-top: 2%">
-                <i class="icon-tag"></i>  <b th:text="${category.name}"></b></br>
-                <i class="icon-info-sign"></i>  <b th:text="${category.description}"></b><br>
-                <i class="icon-signal"></i>  共收录了<b th:text="${num}" class="text-success"></b>篇
+                <h4>专栏简介</h4>
+                <hr>
+                <b th:text="${category.description}"></b><br>
+                <hr>
             </div>
+            <i class="icon-signal"></i>  共收录了<b th:text="${num}" class="text-success"></b>篇
         </div>
 
         <div class="col-sm-8 col-md-10">

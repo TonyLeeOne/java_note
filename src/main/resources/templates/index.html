@@ -56,7 +56,7 @@
         </div>
         <div class="col-sm-4  col-md-3" style="position: fixed;right: 30px;top: 70px">
             <div class="col-sm-12">
-                <h5>热门标签</h5>
+                <h5>热门专栏</h5>
                 <div th:each="category,stats:${categories}" th:if="${stats.index}<10">
                     <div class="outer"><a th:href="@{'/note/archive?category='+${category.name}}" style="text-decoration-line: none"><img th:src="${category.image}" class="img-thumbnail thumbail"> <span class="name" th:text="${category.name}"></span></a></div>
                 </div>
