@@ -57,18 +57,10 @@
         <div class="col-sm-4  col-md-3" style="position: fixed;right: 30px;top: 70px">
             <div class="col-sm-12">
                 <h5>热门标签</h5>
-                <div>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/javabase.gif" class="img-thumbnail thumbail"> <span class="name">Java基础</span></div></a>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/javahigh.gif" class="img-thumbnail thumbail"> <span class="name">Java高级</span></div></a>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/java.gif" class="img-thumbnail thumbail"> <span class="name">Java进阶</span></div></a>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/jenkins.gif" class="img-thumbnail thumbail"> <span class="name">Jenkins配置</span></div></a>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/mysql.gif" class="img-thumbnail thumbail"> <span class="name">Mysql数据库</span></div></a>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/linux.gif" class="img-thumbnail thumbail"> <span class="name">Linux相关</span></div></a>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/spring.gif" class="img-thumbnail thumbail"> <span class="name">Java框架</span></div></a>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/designpattern.gif" class="img-thumbnail thumbail"> <span class="name">Java设计模式</span></div></a>
-                    <a href="#" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/tomcat.gif" class="img-thumbnail thumbail"> <span class="name">tomcat服务器</span></div></a>
-                    <a href="/category" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/more.gif" class="img-thumbnail thumbail"> <span class="name">查看更多 <i class="icon-spinner icon-spin"></i></span></div></a>
+                <div th:each="category,stats:${categories}" th:if="${stats.index}<10">
+                    <a th:href="@{'/note/archive?category='+${category.name}}" style="text-decoration-line: none"><div class="outer"><img th:src="${category.image}" class="img-thumbnail thumbail"> <span class="name" th:text="${category.name}"></span></div></a>
                 </div>
+                <a href="/category" style="text-decoration-line: none"><div class="outer"><img src="/images/tags/more.gif" class="img-thumbnail thumbail"> <span class="name">查看更多 <i class="icon-spinner icon-spin"></i></span></div></a>
             </div>
         </div>
     </div>

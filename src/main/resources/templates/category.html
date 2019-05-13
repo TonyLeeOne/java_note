@@ -45,7 +45,7 @@
             <button class="button button-action button-box" id="plus" data-toggle="modal" data-target="#example"><i
                     class="icon-plus"></i></button>
             　
-            <button class="button button-caution button-box" id="delete"><i class="icon-trash"></i></button>
+            <button class="button button-caution button-box" id="delete"><i class="icon-cog"></i></button>
         </div>
 
         <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -54,9 +54,12 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">新增分类</h4>
+                        <h4 class="modal-title" id="exampleModalLabel">编辑分类</h4>
                     </div>
                     <div class="modal-body">
+                        <div class="form-group">
+                            <input type="hidden" id="cid">
+                        </div>
                         <div class="form-group">
                             图片预览: <img src="/images/timg.gif" style="width: 30px;height: 30px" id="uploaded">
                         </div>
@@ -65,6 +68,9 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="content" placeholder="分类名">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="描述" id="description"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -84,6 +90,8 @@
                     </a>
                     <i class="icon-remove-sign"
                        th:id="${category.id}"></i>
+                    <i class="icon-edit-sign"
+                       th:id="${category.id}" data-toggle="modal" data-target="#example"></i>
                 </div>
             </div>
         </div>
@@ -102,6 +110,7 @@
 
     $(function () {
         $(".icon-remove-sign").hide();
+        $(".icon-edit-sign").hide();
     });
 
     $("#files").change(function () {
@@ -127,15 +136,20 @@
     });
     $("#delete").click(function () {
         $(".icon-remove-sign").toggle();
+        $(".icon-edit-sign").toggle();
     });
 
     $("#ok").click(function () {
         var content = $("#content").val();
         var img = $("#uploaded").attr('src');
+        var desc = $("#description").val();
+        var id = $("#cid").val();
         if (content)
             var cate = {};
         cate.name = content;
         cate.image = img;
+        cate.description = desc;
+        cate.id = id;
         $.ajax({
             url: "/category",
             method: "post",
@@ -163,14 +177,14 @@
 
     $("[class='icon-remove-sign']").each(function () {
         $(this).click(function () {
-            var did= $(this).attr("id");
+            var did = $(this).attr("id");
             $.ajax({
                 url: "/category?id=" + did,
                 method: "delete",
                 success: function (res) {
                     if (res == 'true') {
-                       window.location.reload();
-                    }else
+                        window.location.reload();
+                    } else
                         Messenger().post({
                             message: "删除失败",
                             type: "error",
@@ -188,6 +202,26 @@
         });
     });
 
+    $("[class='icon-edit-sign']").each(function () {
+        $(this).click(function () {
+            var did = $(this).attr("id");
+            $.ajax({
+                url: "/category/detail?id=" + did,
+                method: "get",
+                success: function (data) {
+                    if (data) {
+                        $("#content").val(data.name);
+                        $("#cid").val(data.id);
+                        $("#uploaded").attr('src', data.image);
+                        $("#description").val(data.description);
+                    }
+                },
+                error: function () {
+                    console.log("系统错误");
+                }
+            });
+        });
+    });
 
 
 </script>

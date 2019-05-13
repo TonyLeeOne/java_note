@@ -47,10 +47,11 @@ create table category
   id varchar(30) not null
     primary key,
   name varchar(100) null,
-  is_delete char default '1' null
+  is_delete char default '1' null,
+  image varchar(100) null,
+  description varchar(1000) null
 )
 ;
-
 
 
 

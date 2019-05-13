@@ -71,10 +71,6 @@ public class CaffeineConfiguration {
         }
 
         if(key.equals(ALL_CATEGORIES)){
-            return noteService.getCategories();
-        }
-
-        if(key.equals(CATEGORIES)){
             return categoryService.getList();
         }
 

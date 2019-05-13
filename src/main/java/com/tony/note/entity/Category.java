@@ -21,4 +21,5 @@ public class Category {
     private String image;
     @TableLogic(value = "1",delval = "2")
     private String isDelete;
+    private String description;
 }

@@ -36,8 +36,6 @@ public class FileController {
     public Map<String,Object> fileUpload(@RequestParam(value = "editormd-image-file", required = false)MultipartFile file, HttpServletRequest request){
         Map<String,Object> resultMap=new HashMap<>(4);
         String fileName=file.getOriginalFilename();
-        System.out.println("111111111111");
-        System.out.println(fileName);
         String newName=System.currentTimeMillis()+(int)Math.random()*100+fileName.substring(fileName.indexOf("."),fileName.length());
             try {
                 byte[] bytes=file.getBytes();

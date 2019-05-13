@@ -6,6 +6,7 @@ import com.tony.note.controller.dto.IPageVo;
 import com.tony.note.controller.dto.NoteVo;
 import com.tony.note.entity.Info;
 import com.tony.note.entity.Note;
+import com.tony.note.service.CategoryService;
 import com.tony.note.service.InfoService;
 import com.tony.note.service.NoteService;
 import com.tony.note.service.impl.CaffeineService;
@@ -39,6 +40,9 @@ public class NoteController {
     @Autowired
     private CaffeineService caffeineService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @PostMapping
     @ResponseBody
     private boolean save(@RequestBody NoteVo note, HttpSession session) {
@@ -63,7 +67,7 @@ public class NoteController {
     @GetMapping("/show")
     private String getShowList(int pageNum, int size, ModelMap modelMap) {
         modelMap.addAttribute("data", caffeineService.getNoteList(pageNum, size));
-        modelMap.addAttribute(Constant.ALL_CATEGORIES, caffeineService.getCategories());
+        modelMap.addAttribute(Constant.ALL_CATEGORIES, caffeineService.getAllCategories());
         return "index";
     }
 
@@ -78,7 +82,7 @@ public class NoteController {
         Note note = noteService.editNote(id);
         NoteVo noteVo = BeanMapper.map(note, NoteVo.class);
         modelMap.addAttribute("note", noteVo);
-        modelMap.addAttribute("categories",caffeineService.getAllCategories());
+        modelMap.addAttribute(Constant.ALL_CATEGORIES,caffeineService.getAllCategories());
         return "edit";
     }
 
@@ -117,6 +121,8 @@ public class NoteController {
     private String archive(String category, ModelMap modelMap) {
         Map<String, List<NoteVo>> res = caffeineService.getArchives(category);
         modelMap.addAttribute("data", res);
+        modelMap.addAttribute("category",categoryService.get(category));
+        modelMap.addAttribute("num",noteService.numByCategory(category));
         return "archive";
     }
 

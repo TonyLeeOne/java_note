@@ -28,8 +28,11 @@
                    th:value="${note.noteName}">
             <input type="hidden" id="id" th:value="${note.id}">
             <span class="input-group-addon">分类</span>
-            <input type="text" class="form-control" placeholder="请输入分类" aria-describedby="basic-addon1" id="category"
-                   th:value="${note.category}">
+            <select id="category" class="form-control">
+                <div th:each="category:${categories}">
+                    <option th:text="${category.name}"></option>
+                </div>
+            </select>
             <span class="input-group-addon">封面</span>
             <input type="text" class="form-control" placeholder="请输入url" aria-describedby="basic-addon1" id="imageUrl"
                    th:value="${note.imageUrl}">
@@ -53,9 +56,10 @@
         <button type="button" class="button button-rounded button-caution" id="personal">设置私密
         </button>
         　　
-        <button type="button" class="button button-rounded button-royal" id="publisher" th:if="${session.username}=='TonyLeeOne'">发布公告
+        <button type="button" class="button button-rounded button-royal" id="publisher"
+                th:if="${session.username}=='TonyLeeOne'">发布公告
         </button>
-　　
+        　　
         <a type="button" href="/note/list?pageNum=1&size=10" class="button button-rounded button-action button-border">返回管理页面
         </a>
     </div>

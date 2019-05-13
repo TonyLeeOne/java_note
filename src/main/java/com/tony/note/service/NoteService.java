@@ -40,4 +40,6 @@ public interface NoteService extends IService<Note> {
 
     boolean used(String category);
 
+    int numByCategory(String categoryName);
+
 }

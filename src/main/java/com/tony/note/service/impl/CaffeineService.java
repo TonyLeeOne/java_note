@@ -49,12 +49,8 @@ public class CaffeineService {
         return (NoteVo) cache.get(Constant.PUB);
     }
 
-    public List<Object> getCategories(){
-        return (List<Object>) cache.get(Constant.ALL_CATEGORIES);
-    }
-
     public List<Category> getAllCategories(){
-        return (List<Category>) cache.get(Constant.CATEGORIES);
+        return (List<Category>) cache.get(Constant.ALL_CATEGORIES);
     }
 
 

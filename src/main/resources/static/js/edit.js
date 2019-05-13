@@ -49,7 +49,7 @@ $(function () {
             var note = {};
             note.id = $("#id").val();
             note.noteName = $("#title").val();
-            note.category = $("#category").val();
+            note.category = $("#category").find("option:selected").text();
             note.content = $("#content").val();
             note.imageUrl = $("#imageUrl").val();
             note.state = '1';
@@ -62,7 +62,7 @@ $(function () {
             var note = {};
             note.id = $("#id").val();
             note.noteName = $("#title").val();
-            note.category = $("#category").val();
+            note.category = $("#category").find("option:selected").text();
             note.content = $("#content").val();
             note.imageUrl = $("#imageUrl").val();
             note.state = '2';
@@ -75,7 +75,7 @@ $(function () {
             var note = {};
             note.id = $("#id").val();
             note.noteName = $("#title").val();
-            note.category = $("#category").val();
+            note.category = $("#category").find("option:selected").text();
             note.content = $("#content").val();
             note.imageUrl = $("#imageUrl").val();
             note.state = '3';
@@ -89,7 +89,7 @@ $(function () {
             var note = {};
             note.id = $("#id").val();
             note.noteName = $("#title").val();
-            note.category = $("#category").val();
+            note.category = $("#category").find("option:selected").text();
             note.content = $("#content").val();
             note.imageUrl = $("#imageUrl").val();
             note.state = '4';

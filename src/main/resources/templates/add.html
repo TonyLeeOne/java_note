@@ -27,7 +27,11 @@
             <input type="text" class="form-control" placeholder="请输入标题" aria-describedby="basic-addon1" id="title">
             <input type="hidden" class="form-control" id="id">
             <span class="input-group-addon">分类</span>
-            <input type="text" class="form-control" placeholder="请输入分类" aria-describedby="basic-addon1" id="category">
+            <select id="category" class="form-control">
+                <div th:each="category:${categories}">
+                    <option th:text="${category.name}"></option>
+                </div>
+            </select>
             <span class="input-group-addon">封面</span>
             <input type="text" class="form-control" placeholder="请输入封面Url" aria-describedby="basic-addon1"
                    id="imageUrl">

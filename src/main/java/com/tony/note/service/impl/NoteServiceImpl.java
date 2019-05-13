@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.tony.note.controller.dto.IPageVo;
 import com.tony.note.controller.dto.NoteVo;
+import com.tony.note.entity.Category;
 import com.tony.note.entity.Note;
 import com.tony.note.mapper.NoteMapper;
 import com.tony.note.service.InfoService;
@@ -162,6 +163,11 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note> implements No
     @Override
     public boolean used(String category) {
         return count(new QueryWrapper<Note>().lambda().eq(Note::getCategory,category))>0;
+    }
+
+    @Override
+    public int numByCategory(String categoryName) {
+        return count(new QueryWrapper<Note>().lambda().eq(Note::getCategory,categoryName));
     }
 
     @Override
