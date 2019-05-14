@@ -17,13 +17,19 @@
           href="/css/font-awesome.min.css"/>
     <link rel="stylesheet"
           href="/css/railscasts.css">
+    <style>
+        .container{
+            font-family: "YaHei Consolas Hybrid", Consolas, "微软雅黑", "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", courier, monospace;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="navigation::pagination"></div>
 <div class="container" style="margin-top: 2%">
     <div class="row">
         <div class="col-sm-10 col-sm-offset-2">
-            <h2><span th:text="${note.noteName}"></span></h2>
+            <h1><span th:text="${note.noteName}"></span></h1>
             <div class="row">
                 <div class="col-sm-1">
                     <a href="#" id="git" style="text-decoration: none;color: black"><img src="/images/timg.gif"
