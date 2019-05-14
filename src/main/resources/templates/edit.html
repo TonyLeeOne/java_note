@@ -30,7 +30,7 @@
             <span class="input-group-addon">分类</span>
             <select id="category" class="form-control">
                 <div th:each="category:${categories}">
-                    <option th:text="${category.name}"></option>
+                    <option th:text="${category.name}" th:selected="${note.category==category.name}"></option>
                 </div>
             </select>
             <span class="input-group-addon">封面</span>
