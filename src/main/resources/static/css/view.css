@@ -1,0 +1,9 @@
+pre{
+    background-color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    color: #FFFFFF;
+}
+.container{
+    font-family: "YaHei Consolas Hybrid", Consolas, "微软雅黑", "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", courier, monospace;
+    font-size: 15px;
+}

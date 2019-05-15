@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -119,6 +120,9 @@ public class NoteController {
 
     @GetMapping("/archive")
     private String archive(String category, ModelMap modelMap) {
+        if(StringUtils.isEmpty(category)){
+            return "404";
+        }
         Map<String, List<NoteVo>> res = caffeineService.getArchives(category);
         modelMap.addAttribute("data", res);
         modelMap.addAttribute("category",categoryService.get(category));

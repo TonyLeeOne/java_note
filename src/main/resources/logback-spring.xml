@@ -4,8 +4,6 @@
     <property name="LOG_FILE" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}"/>
 
     <root level="info"/>
-
-
     <Logger name="org.mybatis.spring" level="off"/>
     <Logger name="org.apache.ibatis" level="info"/>
     <Logger name="org.apache.commons" level="off"/>
@@ -19,9 +17,6 @@
             <charset>utf8</charset>
         </encoder>
     </appender>
-    <root>
-        <appender-ref ref="CONSOLE"/>
-    </root>
 
 
     <appender name="BUSINESS_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -62,13 +57,13 @@
         <appender-ref ref="SPRING_FILE"/>
     </appender>
 
-    <root level="info">
-        <appender-ref ref="ASYNC_BUSINESS_FILE"/>
-    </root>
-
-    <!--<Logger name="com.tony.note" level="info">-->
+    <!--<root level="info">-->
         <!--<appender-ref ref="ASYNC_BUSINESS_FILE"/>-->
-    <!--</Logger>-->
+    <!--</root>-->
+
+    <Logger name="com.tony.note" level="info">
+        <appender-ref ref="ASYNC_BUSINESS_FILE"/>
+    </Logger>
     <Logger name="org.springframework" level="info">
         <appender-ref ref="ASYNC_SPRING_FILE"/>
     </Logger>
