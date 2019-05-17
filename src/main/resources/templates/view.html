@@ -23,33 +23,32 @@
 <div th:replace="navigation::pagination"></div>
 <div class="container" style="margin-top: 2%">
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-2">
+        <div class="col-sm-11 col-sm-offset-1">
             <h1><span th:text="${note.noteName}"></span></h1>
-            <div class="row">
-                <div class="col-sm-1">
-                    <a href="#" id="git" style="text-decoration: none;color: black"><img src="/images/timg.gif"
-                                                                                         class="img img-circle img-responsive"
-                                                                                         id="img"/>
-                    </a>
-                </div>
-                <div class="col-sm-11" style="padding-top: 25px">
-                    <!--<div style="margin-top: 1%">-->
-                    <i class="icon-user-md"></i> <span th:text="${note.creator}" id="uname"></span>　
-                    <span class="text-success"><i class="icon-star" id="half"></i></span>
-                    　<i class="icon-asterisk"></i> <span th:text="${note.category}"></span>　
-                    　<i class="icon-pencil"></i> <span th:text="${note.createDate}"></span>　
-                    　<i class="icon-edit" th:if="${note.modifyDate}!=null"></i> <span
-                        th:text="${note.modifyDate}"></span>　
-                    　<i class="icon-eye-open"></i><span id="eye">0</span>　
-                    <!--</div>-->
-                </div>
-                <span style="border-bottom:3px double black;cursor:pointer;" class="col-sm-9"></span>　
+            <div class="row" style="margin-top: 3%">
+                    <div class="col-sm-1">
+                        <a href="#" id="git" style="text-decoration: none;color: black;"><img
+                                src="/images/timg.gif"
+                                class="img img-circle img-responsive" style="height: 50px"
+                                id="img"/>
+                        </a>
+                    </div>
+                    <div class="col-sm-10 alert alert-info" style="padding-top: 15px">
+                        <i class="icon-user-md"></i> <span th:text="${note.creator}" id="uname"></span>|<span
+                            class="text-success"> <i class="icon-star" id="half"></i></span>|
+                        <i class="icon-asterisk"></i> <span th:text="${note.category}"></span>|
+                        <i class="icon-eye-open"></i><span id="eye">0</span>|<i class="icon-pencil"></i> <span
+                            th:text="${note.createDate}"></span>|<i class="icon-edit"
+                                                                    th:if="${note.modifyDate}!=null"></i> <span
+                            th:text="${note.modifyDate}"></span>　
+                        <!--</div>-->
+                    </div>
             </div>
-            <div id="test-editormd-view" class="col-sm-10" style="margin-top: 1%">
+            <div id="test-editormd-view" class="col-sm-11" style="margin-top: 3%">
                 <textarea style="display:none;" name="test-editormd-markdown-doc" th:text="${note.content}"></textarea>
             </div>
-            <span style="border-bottom:3px double black;cursor:pointer;" class="col-sm-10"></span>
-            <div class="col-sm-10" style="margin-top: 2%">
+            <span style="border-bottom:3px double black;cursor:pointer;" class="col-sm-11"></span>
+            <div class="col-sm-11" style="margin-top: 2%">
                 <div class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only">Error:</span>
