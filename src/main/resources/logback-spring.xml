@@ -57,9 +57,9 @@
         <appender-ref ref="SPRING_FILE"/>
     </appender>
 
-    <!--<root level="info">-->
-        <!--<appender-ref ref="ASYNC_BUSINESS_FILE"/>-->
-    <!--</root>-->
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+    </root>
 
     <Logger name="com.tony.note" level="info">
         <appender-ref ref="ASYNC_BUSINESS_FILE"/>
