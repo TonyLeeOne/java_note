@@ -34,17 +34,17 @@
                         </a>
                     </div>
                     <div class="col-sm-10 alert alert-info" style="padding-top: 15px">
-                        <i class="icon-user-md"></i> <span th:text="${note.creator}" id="uname"></span>|<span
-                            class="text-success"> <i class="icon-star" id="half"></i></span>|
-                        <i class="icon-asterisk"></i> <span th:text="${note.category}"></span>|
-                        <i class="icon-eye-open"></i><span id="eye">0</span>|<i class="icon-pencil"></i> <span
-                            th:text="${note.createDate}"></span>|<i class="icon-edit"
+                        <i class="icon-user-md"></i> <span th:text="${note.creator}" id="uname"></span> | <span
+                            class="text-success"> <i class="icon-star" id="half"></i></span> |
+                        <i class="icon-asterisk"></i> <span th:text="${note.category}"></span> |
+                        <i class="icon-eye-open"></i><span id="eye">0</span> | <i class="icon-pencil"></i> <span
+                            th:text="${note.createDate}"></span> | <i class="icon-edit"
                                                                     th:if="${note.modifyDate}!=null"></i> <span
                             th:text="${note.modifyDate}"></span>　
                         <!--</div>-->
                     </div>
             </div>
-            <div id="test-editormd-view" class="col-sm-11" style="margin-top: 3%">
+            <div id="test-editormd-view" class="col-sm-11" style="margin-top: 2%">
                 <textarea style="display:none;" name="test-editormd-markdown-doc" th:text="${note.content}"></textarea>
             </div>
             <span style="border-bottom:3px double black;cursor:pointer;" class="col-sm-11"></span>

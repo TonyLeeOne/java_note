@@ -2,8 +2,8 @@ var i = 0;
 $(function () {
     var view=$("#test-editormd-view").find("div:first");
     // 生成左侧边目录
-    // view.wrap("<div style='background-color: #999999'></div>")
-    view.addClass("markdown-toc editormd-markdown-toc col-sm-2 col-sm-offset-6");
+    // view.wrap("<div class='col-sm-5'></div>")
+    view.addClass("markdown-toc editormd-markdown-toc col-sm-2 col-sm-offset-7 col-md-2 col-md-offset-7");
     view.css({
         "position": "fixed",
         "padding-left": "1%",
